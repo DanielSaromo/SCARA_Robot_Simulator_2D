@@ -63,7 +63,7 @@ def plot_robot_movement(robot, theta_initial, delta_p,
     ax1.scatter(p_actual[0], p_actual[1],   color='orange',s=100, label='Actual')
     ax1.scatter(0, 0, s=100, c='k')
     ax1.set_aspect('equal')
-    ax1.set_title('Workspace')
+    ax1.set_title('World Space (a.k.a. Workspace)')
     ax1.legend()
     if activate_grid:
         ax1.grid(True)
