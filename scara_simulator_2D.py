@@ -361,7 +361,7 @@ if __name__ == '__main__':
     #env_robot.DirectKinematics([0, np.pi/2, -np.pi/2])
 
     # Recall the description of the DK function:
-    # x_vec : np.ndarray, shape (n,)
+    #    x_vec : np.ndarray, shape (n,)
     #        X coordinates of each link end.
     #    y_vec : np.ndarray, shape (n,)
     #        Y coordinates of each link end.
