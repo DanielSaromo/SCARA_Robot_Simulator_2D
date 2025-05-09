@@ -17,7 +17,7 @@ def plot_robot_movement(robot, theta_initial, delta_p,
     robot : Robot_SCARA
         Instance of Robot_SCARA with link lengths set.
     theta_initial : array-like of shape (n,)
-        Initial joint angles [theta1, theta2, ..., thetan].
+        Initial of RELATIVE joint angles [theta1, theta2, ..., thetan].
     delta_p : array-like of shape (2,)
         Desired displacement [dx, dy] of the end-effector.
     show_desired_point : bool, default=True
@@ -71,8 +71,8 @@ def plot_robot_movement(robot, theta_initial, delta_p,
     # Configuration space
     n = robot.n
     if n == 2:
-        ax2.scatter(theta_initial[0], theta_initial[1], color='blue',  s=100, label='Initial θ vals')
-        ax2.scatter(theta_new[0],     theta_new[1],     color='orange',s=100, label='Actual θ vals')
+        ax2.scatter(theta_initial[0], theta_initial[1], color='blue',  s=100, label='Initial val for the vector θ rel')
+        ax2.scatter(theta_new[0],     theta_new[1],     color='orange',s=100, label='Actual val for the vector θ rel')
         ax2.set_xlim(0, 2 * np.pi)
         ax2.set_ylim(0, 2 * np.pi)
         ax2.set_xlabel(r'$\theta_0$')
@@ -80,8 +80,8 @@ def plot_robot_movement(robot, theta_initial, delta_p,
     else:
         # Parallel-coordinates for all joints
         joint_indices = np.arange(n)
-        ax2.plot(joint_indices, theta_new,     color='orange', marker='o', linestyle='-', linewidth=2, label='Actual θ vals')
-        ax2.plot(joint_indices, theta_initial, color='blue',   marker='o', linestyle='--', linewidth=2, label='Initial θ vals')
+        ax2.plot(joint_indices, theta_new,     color='orange', marker='o', linestyle='-', linewidth=2, label='Actual val for the vector θ rel')
+        ax2.plot(joint_indices, theta_initial, color='blue',   marker='o', linestyle='--', linewidth=2, label='Initial val for the vector θ rel')
         ax2.set_xticks(joint_indices)
         ax2.set_xticklabels([fr'$\theta_{{{i}}}$' for i in joint_indices])
         ax2.set_ylim(0, 2 * np.pi)
@@ -131,7 +131,7 @@ def show_two_states():
     # Instantiate SCARA robot
     robot = Robot_SCARA(lengths)
 
-    # Random initial joint angles
+    # Random initial RELATIVE joint angles
     theta_initial = np.random.rand(N) * 2 * np.pi
 
     # Desired displacement
